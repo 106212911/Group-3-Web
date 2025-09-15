@@ -46,10 +46,12 @@ p {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.LearnMore {
+.LearnMoreButton {
+    display: inline-block;
     border: 1px solid #999;
+    border-radius: 20px;
     padding: 6px 12px;
     text-decoration: none;
     border-style: solid;
-    font-weight: bold
+    background-color: lightblue
 }
