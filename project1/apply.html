@@ -27,10 +27,11 @@
     <form action="https://mercury.swin.edu.au/it000000/formtest.php" method="post">
     
     <br>
-        <table class="formTable">
-        <strong>Job Application Form</strong>
+     
+    <strong>Job Application Form</strong>
 
-    
+        <table class="formTable">
+        
         <!--Job Reference-->
         <tr>
             <td><label for="jobref">Job Reference Number: </label></td>
@@ -57,7 +58,7 @@
         <!--Date of Birth-->
         <tr>
             <td><label for="dob"> Date of Birth: </label></td>
-            <td><input type="date" id="dob" name="dob" placeholder="dd/mm/yyyy" required></td>
+            <td><input type="text" id="dob" name="dob" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" required>/td>
         </tr>
 
         <!--Gender-->
@@ -84,3 +85,4 @@
             <td><label for="suburb">Suburb: </label></td>
             <td><input type="text" id="suburb" name="suburb" maxlength="20" required></td>
         </tr>
+  
