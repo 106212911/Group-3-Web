@@ -127,8 +127,20 @@
         <tr>
             <td><label for="phone">Phone Number: </label></td>
             <td><input type="tel" id="phone" name="phone" pattern="^(\+?6?01)[02-46-9]-*[0-9]{7}$|^(\+?6?01)[1]-*[0-9]{8}$" required></td>
+        </tr> 
+
+        <!--Technical Skills -->
+        <!--For Technical Skills Section, checkboxes are used as required. However, HTML cannot put "at least one checkbox selection" because
+        applying "required" to a checkbox forces that option upon users, so this requirement is replaced with a asterisk (*) instead-->
+        <tr>
+            <td><label for="skill-py">Required Technical List: *</label></td>
+            <td>
+                <label for="skill-py"><input type="checkbox" id="skill-py" name="skills" value="Python"> Python</label>
+                <label for="skill-excel"><input type="checkbox" id="skill-excel" name="skills" value="Excel"> Excel</label>
+                <label for="skill-sql"><input type="checkbox" id="skill-sql" name="skills" value="MySQL"> MySQL</label>
+                <label for="skill-r"><input type="checkbox" id="skill-r" name="skills" value="R"> R</label>
+                <label for="skill-ta"><input type="checkbox" id="skill-ta" name="skills" value="Tableau"> Tableau</label>
+                <label for="skill-pbi"><input type="checkbox" id="skill-pbi" name="skills" value="PowerBI"> PowerBI</label>
+            </td>
         </tr>
-        </table>
-    </form>
-</body>
-</html>
+       
