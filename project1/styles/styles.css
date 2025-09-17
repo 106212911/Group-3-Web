@@ -57,28 +57,5 @@ p {
 }
 
  
-        body {
-            font-family: Arial, sans-serif;
-            margin: 2em;
-            line-height: 1.6;
-        }
-        header, footer {
-            background-color: #f4f4f4;
-            padding: 1em;
-            text-align: center;
-        }
-        aside {
-            background-color: #eef;
-            padding: 1em;
-            margin: 1em 0;
-        }
-        section {
-            margin-bottom: 2em;
-        }
-        h1 {
-            color: #003366;
-        }
-        h2 {
-            color: #004488;
-        }
+      
     
