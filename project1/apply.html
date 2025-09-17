@@ -32,12 +32,16 @@
         <table class="formTable">
         
         <!--Job Reference-->
+        <!--Table is used for form layout as required but WAVE flags "Layout Table" but the form is accessible with proper labels and fieldsets-->
         <tr>
-            <td><label for="jobref">Job Reference Number: </label></td>
-            <td><select id="jobref" name="jobref" required>
-                <option value="">--Select--</option>
-                <option value="-">-</option>
-                <option value="-">-</option>
+            <td>
+                <label for="jobref">Job Reference Number:</label>
+            </td>
+            <td>
+                <select id="jobref" name="jobref">
+                    <option value="">--Select--</option>
+                    <option value="DA289">DA289</option>
+                    <option value="AIP42">AIP42</option>
                 </select>
             </td>
         </tr>
@@ -62,13 +66,19 @@
 
         <!--Gender-->
         <tr>
-            <td><label for="male">Gender: </label></td>
+            <td>Gender:</td>
             <td>
-                 <fieldset>
+                <fieldset>
                     <legend>Select Gender</legend>
-                        <label for="male"><input type="radio" id="male" name="gender" value="Male" required> Male</label>
-                        <label for="female"><input type="radio" id="female" name="gender" value="Female" required> Female</label>
-                        <label for="other"><input type="radio" id="other" name="gender" value="Other" required> Other</label>
+
+                    <input type="radio" id="male" name="gender" value="Male" required>
+                    <label for="male">Male</label>
+
+                    <input type="radio" id="female" name="gender" value="Female"> 
+                    <label for="female">Female</label>
+
+                    <input type="radio" id="other" name="gender" value="Other"> 
+                    <label for="other">Other</label>
                 </fieldset>
             </td>
         </tr>
@@ -132,14 +142,28 @@
         <!--For Technical Skills Section, checkboxes are used as required. However, HTML cannot put "at least one checkbox selection" because
         applying "required" to a checkbox forces that option upon users, so this requirement is replaced with a asterisk (*) instead-->
         <tr>
-            <td><label for="skill-py">Required Technical List: *</label></td>
+            <td>Required Technical List: *</td>
             <td>
-                <label for="skill-py"><input type="checkbox" id="skill-py" name="skills" value="Python"> Python</label>
-                <label for="skill-excel"><input type="checkbox" id="skill-excel" name="skills" value="Excel"> Excel</label>
-                <label for="skill-sql"><input type="checkbox" id="skill-sql" name="skills" value="MySQL"> MySQL</label>
-                <label for="skill-r"><input type="checkbox" id="skill-r" name="skills" value="R"> R</label>
-                <label for="skill-ta"><input type="checkbox" id="skill-ta" name="skills" value="Tableau"> Tableau</label>
-                <label for="skill-pbi"><input type="checkbox" id="skill-pbi" name="skills" value="PowerBI"> PowerBI</label>
+                <fieldset>
+                    <legend>Technical Skills</legend>
+                    <input type="checkbox" id="skill-py" name="skills" value="Python">
+                    <label for="skill-py">Python</label>
+
+                    <input type="checkbox" id="skill-excel" name="skills" value="Excel">
+                    <label for="skill-excel">Excel</label>
+
+                    <input type="checkbox" id="skill-sql" name="skills" value="MySQL">
+                    <label for="skill-sql">MySQL</label>
+
+                    <input type="checkbox" id="skill-r" name="skills" value="R">
+                    <label for="skill-r">R</label>
+
+                    <input type="checkbox" id="skill-ta" name="skills" value="Tableau">
+                    <label for="skill-ta">Tableau</label>
+                
+                    <input type="checkbox" id="skill-pbi" name="skills" value="PowerBI">
+                    <label for="skill-pbi">PowerBI</label>
+                </fieldset>
             </td>
         </tr>
 
@@ -159,7 +183,7 @@
         </table>
     </form>
     <footer>
-    <p>&copy; 2025 Your Company Name |
+    <p>&copy; 2025 SolidTech |
         <a href="">Your Jira Project</a>
     </p>
     </footer>
