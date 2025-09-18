@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="COS10026 Web Technology Project">
+    <meta name="keywords" content="COS10026, Web Technology Project, Applied Web Project, Swinburne University of Technology, Assignment">
+    <meta name="author" content="Jun Hao">
+    <title>Job Application</title>
+    <link href="styles/styles.css" rel="stylesheet">
+</head>
+
+<!--The link above links to the css styles folder for references-->
+
+<body>
+    <header>
+        <h1>Apply For A Position</h1>
+        <nav>
+                <a href="index.html">Home</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="apply.html">Apply Now</a>
+                <a href="about.html">About Us</a>
+                <a href="mailto:info@FutureTech.com.au">Contact Us</a>
+        </nav>
+    </header>
+
+    <br>
+
+    <form action="https://mercury.swin.edu.au/it000000/formtest.php" method="post">
+    
+    <h2>Job Application Form</h2>
+
+        <table class="formTable">
+        
+        <!--Job Reference-->
+        <!--Table is used for form layout as required but WAVE flags "Layout Table" but the form is accessible with proper labels and fieldsets-->
+        <tr>
+            <td>
+                <label for="jobref">Job Reference Number:</label>
+            </td>
+            <td>
+                <select id="jobref" name="jobref">
+                    <option value="">--Select--</option>
+                    <option value="DA289">DA289</option>
+                    <option value="AIP42">AIP42</option>
+                </select>
+            </td>
+        </tr>
+
+        <!--First Name-->
+        <tr>
+            <td><label for="fname">First Name: </label></td>
+            <td><input type="text" id="fname" name="fname" maxlength="20" pattern="[A-Za-z]+" required></td>
+        </tr>
+
+        <!--Last Name-->
+        <tr>
+            <td><label for="lname">Last Name: </label></td>
+            <td><input type="text" id="lname" name="lname" maxlength="20" pattern="[A-Za-z ]+" required></td>
+        </tr>
+
+        <!--Date of Birth-->
+        <tr>
+            <td><label for="dob"> Date of Birth: </label></td>
+            <td><input type="text" id="dob" name="dob" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" required></td>
+        </tr>
+
+        <!--Gender-->
+        <tr>
+            <td>Gender:</td>
+            <td>
+                <fieldset>
+                    <legend>Select Gender</legend>
+
+                    <input type="radio" id="male" name="gender" value="Male" required>
+                    <label for="male">Male</label>
+
+                    <input type="radio" id="female" name="gender" value="Female"> 
+                    <label for="female">Female</label>
+
+                    <input type="radio" id="other" name="gender" value="Other"> 
+                    <label for="other">Other</label>
+                </fieldset>
+            </td>
+        </tr>
+
+        <!--Street Address-->
+        <tr>
+            <td><label for="street">Street Address: </label></td>
+            <td><input type="text" id="street" name="street" maxlength="20" required></td>
+        </tr>
+
+        <!--Suburb-->
+        <tr>
+            <td><label for="suburb">Suburb: </label></td>
+            <td><input type="text" id="suburb" name="suburb" maxlength="20" required></td>
+        </tr>
+
+        <!--State-->
+        <tr>
+            <td><label for="state">State: </label></td>
+            <td>
+                <select name="state" id="state" required>
+                    <option value="">--Select--</option>
+                    <option value="JHR">Johor</option>
+                    <option value="KDH">Kedah</option>
+                    <option value="KTN">Kelatan</option>
+                    <option value="MLK">Melaka</option>
+                    <option value="NSN">Negeri Sembilan</option>
+                    <option value="PHG">Pahang</option>
+                    <option value="PRK">Perak</option>
+                    <option value="PLS">Perlis</option>
+                    <option value="PNG">Pulau Pinang</option>
+                    <option value="SBH">Sabah</option>
+                    <option value="SWK">Sarawak</option>
+                    <option value="SGR">Selangor</option>
+                    <option value="KUL">Kuala Lumpur</option>
+                    <option value="LBN">Labuan</option>
+                    <option value="PJY">Putrajaya</option>
+                </select>
+            </td>
+        </tr>
+        
+        <!--Postcode-->
+        <tr>
+            <td><label for="postcode">Postcode: </label></td>
+            <td><input type="text" id="postcode" name="postcode" maxlength="5" pattern="\d{5}" required></td>
+        </tr>
+
+        <!--Email Address-->
+        <tr>
+            <td><label for="email">Email Address: </label></td>
+            <td><input type="text" id="email" name="email" maxlength="80" pattern="^.+@.+\..{2,3}$" required></td>
+        </tr>
+
+        <!--Phone Number-->
+        <tr>
+            <td><label for="phone">Phone Number: </label></td>
+            <td><input type="tel" id="phone" name="phone" pattern="^(\+?6?01)[02-46-9]-*[0-9]{7}$|^(\+?6?01)[1]-*[0-9]{8}$" required></td>
+        </tr> 
+
+        <!--Technical Skills -->
+        <!--For Technical Skills Section, checkboxes are used as required. However, HTML cannot put "at least one checkbox selection" because
+        applying "required" to a checkbox forces that option upon users, so this requirement is replaced with a asterisk (*) instead-->
+        <tr>
+            <td>Required Technical List: *</td>
+            <td>
+                <fieldset>
+                    <legend>Technical Skills</legend>
+                    <input type="checkbox" id="skill-py" name="skills" value="Python">
+                    <label for="skill-py">Python</label>
+
+                    <input type="checkbox" id="skill-excel" name="skills" value="Excel">
+                    <label for="skill-excel">Excel</label>
+
+                    <input type="checkbox" id="skill-sql" name="skills" value="MySQL">
+                    <label for="skill-sql">MySQL</label>
+
+                    <input type="checkbox" id="skill-r" name="skills" value="R">
+                    <label for="skill-r">R</label>
+
+                    <input type="checkbox" id="skill-ta" name="skills" value="Tableau">
+                    <label for="skill-ta">Tableau</label>
+                
+                    <input type="checkbox" id="skill-pbi" name="skills" value="PowerBI">
+                    <label for="skill-pbi">PowerBI</label>
+
+                    <input type="checkbox" id="skill-java" name="skills" value="JavaScript">
+                    <label for="skill-java">JavaScript</label>
+
+                    <input type="checkbox" id="skill-figma" name="skills" value="Figma">
+                    <label for="skill-figma">Figma</label>
+
+                </fieldset>
+            </td>
+        </tr>
+
+        <!--Other Skills-->
+        <tr>
+            <td><label for="otherskills">Other Skills: </label></td>
+            <td><textarea id="otherskills" name="otherskills" rows="4" cols="30"></textarea></td>
+        </tr> 
+
+        <!--Submit Button-->
+        <tr>
+            <td>
+                <input type="submit" value="Apply">
+                <input type="reset" value="Reset">
+            </td>
+            <td></td>
+        </tr> 
+        </table>
+    </form>
+    <footer>
+    <p>&copy; 2025 SolidTech |
+        <a href="">Your Jira Project</a>
+    </p>
+    </footer>
+</body>
+</html>
