@@ -38,7 +38,7 @@
                 <label for="jobref">Job Reference Number:</label>
             </td>
             <td>
-                <select id="jobref" name="jobref">
+                <select id="jobref" name="jobref" required>
                     <option value="">--Select--</option>
                     <option value="DA289">DA289</option>
                     <option value="AIP42">AIP42</option>
@@ -61,7 +61,7 @@
         <!--Date of Birth-->
         <tr>
             <td><label for="dob"> Date of Birth: </label></td>
-            <td><input type="text" id="dob" name="dob" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" required></td>
+            <td><input type="text" id="dob" name="dob" placeholder="dd/mm/yyyy" pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}$" required></td>
         </tr>
 
         <!--Gender-->
@@ -86,13 +86,13 @@
         <!--Street Address-->
         <tr>
             <td><label for="street">Street Address: </label></td>
-            <td><input type="text" id="street" name="street" maxlength="20" required></td>
+            <td><input type="text" id="street" name="street" maxlength="40" required></td>
         </tr>
 
         <!--Suburb-->
         <tr>
             <td><label for="suburb">Suburb: </label></td>
-            <td><input type="text" id="suburb" name="suburb" maxlength="20" required></td>
+            <td><input type="text" id="suburb" name="suburb" maxlength="40" required></td>
         </tr>
 
         <!--State-->
@@ -129,13 +129,13 @@
         <!--Email Address-->
         <tr>
             <td><label for="email">Email Address: </label></td>
-            <td><input type="text" id="email" name="email" maxlength="80" pattern="^.+@.+\..{2,3}$" required></td>
+            <td><input type="email" id="email" name="email" maxlength="80" pattern="^.+@.+\..{2,3}$" required></td>
         </tr>
 
         <!--Phone Number-->
         <tr>
             <td><label for="phone">Phone Number: </label></td>
-            <td><input type="tel" id="phone" name="phone" pattern="^(\+?6?01)[02-46-9]-*[0-9]{7}$|^(\+?6?01)[1]-*[0-9]{8}$" required></td>
+            <td><input type="tel" id="phone" name="phone" pattern="[0-9 ]{8,12}" required></td>
         </tr> 
 
         <!--Technical Skills -->
@@ -169,7 +169,6 @@
 
                     <input type="checkbox" id="skill-figma" name="skills" value="Figma">
                     <label for="skill-figma">Figma</label>
-
                 </fieldset>
             </td>
         </tr>
