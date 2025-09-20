@@ -487,3 +487,31 @@ fieldset {
   gap: 10px;   /* space between buttons */
 }
 
+/* This CSS adds a full-page background image and keeps the footer fixed at the bottom with styled text. */
+html, body {
+    height: 100%;
+    margin: 0;
+
+    /* background setup */
+    background: url("images/green.png") no-repeat center center;
+    background-size: cover;     /* stretch image to always cover screen */
+    background-attachment: fixed;     /* keeps background in place while scrolling */ 
+}
+
+/* flex only the wrapper, not the whole body */
+.page-wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;  /* stacks header, main, footer vertically */
+}
+
+main {
+    flex: 1; /* pushes footer down */
+}
+
+footer {
+    background-color: rgba(44, 62, 80, 0.95);
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
