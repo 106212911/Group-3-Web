@@ -417,6 +417,73 @@ p {
             border-top: 1px solid #3a4a5d;
         }
  
-      
-    
+/* Made By Jun Hao */
+
+/* title for the table */
+caption{
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    color: #333
+}
+ 
+/* Table Style */
+.formTable {
+    border-collapse: separate;
+    border-spacing: 20;
+    width: 80%;
+    max-width: 900px;
+    margin: 40px auto;
+    border: 2px solid #333;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #fdfdf5;
+}     
+
+/* Table Input Style */
+.formTable input:not([type="radio"]):not([type="checkbox"]),
+.formTable select,
+.formTable textarea {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Table Data Allignment Style */
+.formTable td{
+    padding: 30px 30px; 
+    vertical-align: middle;
+}
+
+/* Apply to both gender and technical skills sections */
+fieldset {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* Make checkboxes align in one straight row */
+.skills {
+    display: flex;
+    flex-wrap: wrap; /* allows wrapping if too long */
+    gap: 15px;       
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.skills label {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* space between box and text */
+    white-space: nowrap; /* keep text with its box */
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;   /* space between buttons */
+}
 
