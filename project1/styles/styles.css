@@ -432,7 +432,7 @@ caption{
 /* Table Style */
 .formTable {
     border-collapse: separate;
-    border-spacing: 20;
+    border-spacing: 2.5em;
     width: 80%;
     max-width: 900px;
     margin: 40px auto;
