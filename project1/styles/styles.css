@@ -44,8 +44,7 @@ nav {
     top: 20px;
     right: 40px;
     margin-top: 20px;
-    position: absolute
-    
+    position: absolute;
 }
 
 /* For the bg image */
@@ -260,8 +259,10 @@ p {
 }
 
 
-
-
+.header-logo {
+    height: 60px;
+    vertical-align: middle;
+}
 
 
 
@@ -386,9 +387,9 @@ p {
         footer {
             background-color: #2c3e50;
             color: white;
-            padding: 40px 0;
+            padding: 20px 0;
             text-align: center;
-            margin-top: 50px;
+            margin-top: 20px;
         }
         
         .footer-content {
@@ -417,6 +418,8 @@ p {
             border-top: 1px solid #3a4a5d;
         }
  
+
+
 /* Made By Jun Hao */
 
 /* title for the table */
