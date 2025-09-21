@@ -489,3 +489,134 @@ fieldset {
   display: flex;
   gap: 10px;   /* space between buttons */
 }
+
+/* by ji han */
+/* ---------------- BODY & BACKGROUND ---------------- */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    background-image: url('../images/download.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #333;
+    line-height: 1.6;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.3); 
+    z-index: -1;
+}
+
+/* ---------------- SECTION TITLES ---------------- */
+.section-title {    
+    background-color: #555;      
+    color: white;                
+    width: 100%;   
+    font-weight: bold;      
+    font-size: 1.5em; 
+    margin: 0;
+    padding: 20px;           
+}
+
+/* ---------------- NAVIGATION ---------------- */
+nav {
+    text-align: center;
+    margin: 1em 0;
+}
+
+nav a {
+    display: inline-block;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin: 0 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+    background-color: #555;
+}
+
+nav a:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+
+/* ---------------- HEADINGS ---------------- */
+h1, h2, h3 {
+    text-align: center;
+    margin: 0.8em 0 0.5em 0;
+}
+
+h1 {
+    font-size: 2.2em;
+}
+
+h2 {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.4em;
+}
+
+/* ---------------- CONTENT SECTIONS ---------------- */
+ul, dl, p {
+    background: rgba(255,255,255,0.85);
+    padding: 1em;
+    border-radius: 12px;
+    margin: 0.5em auto;
+    max-width: 900px;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+}
+
+dl dt {
+    font-weight: bold;
+    margin-top: 0.5em;
+}
+
+dl dd {
+    margin-left: 1em;
+}
+
+/* ---------------- TABLES ---------------- */
+table {
+    border-collapse: collapse;
+    width: 90%;
+    margin: 1em auto;
+    background: rgba(255,255,255,0.85);
+    border-radius: 10px;
+    box-shadow: 4px 4px 12px rgba(0,0,0,0.3);
+}
+
+th, td {
+    border: 1px solid #555;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: rgba(0,0,0,0.1);
+}
+
+tr:nth-child(even) {
+    background-color: rgba(0,0,0,0.05);
+}
+
+/* ---------------- TUTOR SECTION ---------------- */
+.tutor {
+    display: block;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 0.5em 0;
+}
