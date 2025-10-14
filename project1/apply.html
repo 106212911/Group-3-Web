@@ -65,7 +65,7 @@
         <!--Date of Birth-->
         <tr>
             <td><label for="dob"> Date of Birth: </label></td>
-            <td><input type="text" id="dob" name="dob" placeholder="dd/mm/yyyy" pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}$" required></td>
+            <td><input type="date" id="dob" name="dob" required></td>
         </tr>
 
         <!--Gender-->
@@ -95,7 +95,7 @@
 
         <!--Suburb-->
         <tr>
-            <td><label for="suburb">Suburb: </label></td>
+            <td><label for="suburb">Suburb/Town: </label></td>
             <td><input type="text" id="suburb" name="suburb" maxlength="40" required></td>
         </tr>
 
@@ -105,21 +105,14 @@
             <td>
                 <select name="state" id="state" required>
                     <option value="">--Select--</option>
-                    <option value="JHR">Johor</option>
-                    <option value="KDH">Kedah</option>
-                    <option value="KTN">Kelatan</option>
-                    <option value="MLK">Melaka</option>
-                    <option value="NSN">Negeri Sembilan</option>
-                    <option value="PHG">Pahang</option>
-                    <option value="PRK">Perak</option>
-                    <option value="PLS">Perlis</option>
-                    <option value="PNG">Pulau Pinang</option>
-                    <option value="SBH">Sabah</option>
-                    <option value="SWK">Sarawak</option>
-                    <option value="SGR">Selangor</option>
-                    <option value="KUL">Kuala Lumpur</option>
-                    <option value="LBN">Labuan</option>
-                    <option value="PJY">Putrajaya</option>
+                    <option value="VIC">VIC</option>
+                    <option value="NSW">NSW</option>
+                    <option value="QLD">QLD</option>
+                    <option value="NT">NT</option>
+                    <option value="WA">WA</option>
+                    <option value="SA">SA</option>
+                    <option value="TAS">TAS</option>
+                    <option value="ACT">ACT</option>
                 </select>
             </td>
         </tr>
@@ -127,19 +120,19 @@
         <!--Postcode-->
         <tr>
             <td><label for="postcode">Postcode: </label></td>
-            <td><input type="text" id="postcode" name="postcode" maxlength="5" pattern="\d{5}" required></td>
+            <td><input type="text" id="postcode" name="postcode" maxlength="4" pattern="\d{4}" required></td>
         </tr>
 
         <!--Email Address-->
         <tr>
             <td><label for="email">Email Address: </label></td>
-            <td><input type="email" id="email" name="email" maxlength="80" pattern="^.+@.+\..{2,3}$" required></td>
+            <td><input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="example@email.com" required></td>
         </tr>
 
         <!--Phone Number-->
         <tr>
             <td><label for="phone">Phone Number: </label></td>
-            <td><input type="tel" id="phone" name="phone" pattern="[0-9 ]{8,12}" required></td>
+            <td><input type="tel" id="phone" name="phone" pattern="[\d\s]{8,12}" required></td>
         </tr> 
 
         <!--Technical Skills -->
@@ -150,7 +143,7 @@
             <td>
                 <fieldset class="skills">
                     <legend>Technical Skills</legend>
-                    <input type="checkbox" id="skill-py" name="skills" value="Python">
+                    <input type="checkbox" id="skill-py" name="skills" value="Python" required>
                     <label for="skill-py">Python</label>
 
                     <input type="checkbox" id="skill-excel" name="skills" value="Excel">
