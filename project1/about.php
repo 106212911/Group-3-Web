@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="styles/styles.css"/>
 </head>
 <body>  
+<?php include 'nav.inc'; ?>
+
   <header>
     <h1>
     <img src="styles/images(1)/logo.png" alt="SOLID TECH Logo" class="header-logo">
@@ -170,33 +172,6 @@
 
 
 
-<footer>
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3 id="contact">Contact Us</h3>
-                <address>
-                    123 Tech Boulevard<br>
-                    San Francisco, CA 94103<br>
-                    Email: info@solidtech.com<br>
-                    Phone: (415) 555-1234
-                </address>
-            </div>
-
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <p><a href="index.html">About Us</a></p>
-                <p><a href="about.html">Our Team</a></p>
-                <p><a href="apply.html">Application Process</a></p>
-                <p><a href="https://dayaanan.atlassian.net/jira/software/projects/G3WP/boards/101">Jira Link</a></p>
-            </div>
-        </div>
-
-        <div class="copyright">
-            <p>&copy; 2023 SOLIDTECH Inc. All rights reserved.</p>
-            <p>Designed with passion for the future of technology</p>
-        </div>
-    </div>
-</footer>
+<?php include 'footer.inc'; ?>
 </body>
 </html>

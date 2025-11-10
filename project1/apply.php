@@ -12,20 +12,10 @@
 <!--The link above links to the css styles folder for references-->
 
 <body>
- <header>
-    <h1>
-    <img src="styles/images(1)/logo.png" alt="Logo" class="header-logo">
-    SOLID TECH
-    </h1>
-    <h2>Creating The Unimaginable</h2>
-    <nav>
-        <a href="index.html"> Home</a>
-        <a href="jobs.html"> Positions</a>
-        <a href="apply.html"> Apply Now</a>
-        <a href="about.html"> About Us</a>
-        <a href="mailto:info@SOLIDTECH.com.au">Contact Us</a>
-    </nav>
-</header>
+
+<?php include 'header.inc'; ?>
+<?php include 'nav.inc'; ?>
+
 
     <br>
 
@@ -188,33 +178,6 @@
         </table>
     </form>
 
-<footer>
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3 id="contact">Contact Us</h3>
-                <address>
-                    123 Tech Boulevard<br>
-                    San Francisco, CA 94103<br>
-                    Email: info@solidtech.com<br>
-                    Phone: (415) 555-1234
-                </address>
-            </div>
-
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <p><a href="index.html">About Us</a></p>
-                <p><a href="about.html">Our Team</a></p>
-                <p><a href="apply.html">Application Process</a></p>
-                <p><a href="https://dayaanan.atlassian.net/jira/software/projects/G3WP/boards/101">Jira Link</a></p>
-            </div>
-        </div>
-
-        <div class="copyright">
-            <p>&copy; 2023 SOLIDTECH Inc. All rights reserved.</p>
-            <p>Designed with passion for the future of technology</p>
-        </div>
-    </div>
-</footer>
+<?php include 'footer.inc'; ?>
 </body>
 </html>
