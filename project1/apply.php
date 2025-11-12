@@ -19,7 +19,7 @@
 
     <br>
 
-    <form action="https://mercury.swin.edu.au/it000000/formtest.php" method="post">
+    <form action="process_eoi.php" method="post">
     
         <table class="formTable">
         
