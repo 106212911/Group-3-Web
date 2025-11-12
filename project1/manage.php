@@ -117,15 +117,14 @@ if (mysqli_num_rows($result) > 0) {
     echo "<p>No EOI's found.</p>"; 
 } 
 ?> 
-
-</p> 
+ 
 
 <p class="logout-link"> 
     <a href="?logout=true" class="logout-button">Logout</a> 
 </p>
 
 <?php 
-<!-- For form sort and search--> 
+
 ?> 
 
 <form method="get" action=""> 

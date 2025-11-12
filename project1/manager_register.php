@@ -5,16 +5,16 @@ session_start();
 require_once("settings.php");
 
 // For login
-if (isset($_SESSION['manager_logged_in']) && $_SESSION['manager_logged_in'] === true && !isset($_GET['logout'])) {
+if (isset($_SESSION['manager_logged_in']) && $_SESSION['manager_logged_in'] === true) {
     header('Location: manage.php');
     exit();
 }
 
 // For the Logout
-if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
+if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
     session_unset();
     session_destroy();
-    header('Location: manager_login.php');
+    header('Location: manager_register.php');
     exit();
 }
 
