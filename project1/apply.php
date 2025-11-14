@@ -19,7 +19,7 @@
 
     <br>
 
-    <form action="process_eoi.php" method="post">
+    <form action="process_eoi.php" method="post" novalidate="novalidate">
     
         <table class="formTable">
         
