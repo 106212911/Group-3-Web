@@ -1,5 +1,4 @@
 <?php
-
     // Prevent direct access and ensures only access it through the form (POST method)
     if ($_SERVER["REQUEST_METHOD"] != "POST"){
         header("location: apply.php");
@@ -9,12 +8,45 @@
     // Database connection details
     require_once("settings.php"); 
 
-    // Connects to MyphpAdmin database using details from settings.php
-    $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
-
+    // First connect to MySQL server without selecting database
+    $conn = @mysqli_connect($host, $user, $pwd);
+    
     // If connection fails, show error message and stop execution
     if (!$conn){
         die("<p>Database connection failed: " . mysqli_connect_error() . "</p>");
+    }
+
+    // Create database if it doesn't exist
+    $create_db = "CREATE DATABASE IF NOT EXISTS $sql_db";
+    if (mysqli_query($conn, $create_db)) {
+        // Select the database
+        mysqli_select_db($conn, $sql_db);
+        
+        // Create EOI table if it doesn't exist
+        $create_table = "CREATE TABLE IF NOT EXISTS eoi (
+            EOInumber INT AUTO_INCREMENT PRIMARY KEY,
+            JobReference VARCHAR(10) NOT NULL,
+            FirstName VARCHAR(20) NOT NULL,
+            LastName VARCHAR(20) NOT NULL,
+            DOB DATE NOT NULL,
+            Gender VARCHAR(10) NOT NULL,
+            StreetAddress VARCHAR(40) NOT NULL,
+            Suburb VARCHAR(40) NOT NULL,
+            State VARCHAR(3) NOT NULL,
+            Postcode VARCHAR(4) NOT NULL,
+            Email VARCHAR(50) NOT NULL,
+            Phone VARCHAR(12) NOT NULL,
+            Skills TEXT,
+            OtherSkills TEXT,
+            Status VARCHAR(10) DEFAULT 'New',
+            ApplyDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )";
+        
+        if (!mysqli_query($conn, $create_table)) {
+            die("<p>Table creation failed: " . mysqli_error($conn) . "</p>");
+        }
+    } else {
+        die("<p>Database creation failed: " . mysqli_error($conn) . "</p>");
     }
 
     // Sanitises and escapes user input to prevent HTML and SQL injection attacks
@@ -41,9 +73,14 @@
     
     // Collect skills checkboxes into one string for database storage
     $skills = isset($_POST["skills"]) ? $_POST["skills"] : [];
+    
+    // FIX: Ensure $skills is always an array
+    if (!is_array($skills)) {
+        $skills = [$skills];
+    }
    
     // "Python, Excel, MySQL"
-    $skillsList = implode(", ", $skills);             
+    $skillsList = implode(", ", $skills);           
 
     // Extra free‑text field for skills not in the checkbox list
     $otherSkills = sanitise_input($conn, $_POST["otherskills"]);
