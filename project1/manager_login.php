@@ -1,6 +1,3 @@
-<!--By Daya-->
-           
-
 <?php
 session_start();
 require_once("settings.php");
@@ -11,15 +8,15 @@ if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
     header('Location: manager_login.php');
     exit();
 }
+
 // for error message
 $error = '';
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
     $password = trim($_POST['password'] ?? '');
 
-    //establish connection first
+    // establish connection first
     $conn = mysqli_connect($host, $user, $pwd, $sql_db);
     if (!$conn) {
         die("Database connection failed: " . mysqli_connect_error());
@@ -47,21 +44,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Manger Login Page</title>
+    <title>Manager Login Page</title>
     <link rel="stylesheet" href="styles/manager_login_page_styles.css">
 </head>
 <body>
     <div class="login-page">
-
         <form method="post" action="">
             <h2>Welcome back, Kindly Login</h2>
 
             <?php if ($error): ?>
-                <div class="error"><?= htmlspecialchars($error) ?></div>   <!--this basically shows error message when login credentials are wrong-->
+                <div class="error"><?= htmlspecialchars($error) ?></div>
+                <!--this basically shows error message when login credentials are wrong-->
             <?php endif; ?>
 
             <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>  <!-- makes password automatically hidden when typing basically-->
+            <input type="password" name="password" placeholder="Password" required>
+            <!-- makes password automatically hidden when typing basically-->
             <button type="submit">Login</button>
         </form>
     </div>
