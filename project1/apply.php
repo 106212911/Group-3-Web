@@ -133,27 +133,27 @@
             <td>
                 <fieldset class="skills">
                     <legend>Technical Skills</legend>
-                    <input type="checkbox" id="skill-py" name="skills" value="Python" required>
+                    <input type="checkbox" id="skill-py" name="skills[]" value="Python" required>
                     <label for="skill-py">Python</label>
 
-                    <input type="checkbox" id="skill-excel" name="skills" value="Excel">
+                    <input type="checkbox" id="skill-excel" name="skills[]" value="Excel">
                     <label for="skill-excel">Excel</label>
 
-                    <input type="checkbox" id="skill-sql" name="skills" value="MySQL">
+                    <input type="checkbox" id="skill-sql" name="skills[]" value="MySQL">
                     <label for="skill-sql">MySQL</label>
 
-                    <input type="checkbox" id="skill-r" name="skills" value="R">
+                    <input type="checkbox" id="skill-r" name="skills[]" value="R">
                     <label for="skill-r">R</label>
 
-                    <input type="checkbox" id="skill-ta" name="skills" value="Tableau">
+                    <input type="checkbox" id="skill-ta" name="skills[]" value="Tableau">
                     <label for="skill-ta">Tableau</label>
-                    <input type="checkbox" id="skill-pbi" name="skills" value="PowerBI">
+                    <input type="checkbox" id="skill-pbi" name="skills[]" value="PowerBI">
                     <label for="skill-pbi">PowerBI</label>
 
-                    <input type="checkbox" id="skill-java" name="skills" value="JavaScript">
+                    <input type="checkbox" id="skill-java" name="skills[]" value="JavaScript">
                     <label for="skill-java">JavaScript</label>
 
-                    <input type="checkbox" id="skill-figma" name="skills" value="Figma">
+                    <input type="checkbox" id="skill-figma" name="skills[]" value="Figma">
                     <label for="skill-figma">Figma</label>
                 </fieldset>
             </td>
