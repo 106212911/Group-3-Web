@@ -149,10 +149,16 @@
   <dl>
     <dt>Hong Ji Han</dt>
     <dd>- Page About Group, JIRA</dd>
+    <dd>- Worked on management.php</dd>
+    <dd>- Worked on some of job.php </dd>
     <dt>Ngai Jun Min</dt>
     <dd>- Job Description, JIRA</dd>
+    <dd>- Worked on management.php</dd>
+    <dd>- Worked on job.php </dd>
     <dt>Pang Jun Hao</dt>
     <dd>- Application form, JIRA</dd>
+    <dd>- Worked on eoi table </dd>
+    <dd>- Worked on process_eoi.php </dd>
     <dt>Dayaanan A/L Kejandran</dt>
     <dd>- Home Page, JIRA</dd>
   </dl>
