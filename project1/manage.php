@@ -9,7 +9,7 @@ if (!$conn) {
     die("Database connection failed: " . mysqli_connect_error()); 
 } 
 
-// Handle logout 
+
 if (isset($_GET['logout']) && $_GET['logout'] === 'true') { 
     session_unset(); 
     session_destroy(); 
@@ -17,7 +17,7 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
     exit(); 
 } 
 
-// If user not logged in, redirect to login 
+
 if (!isset($_SESSION['manager_logged_in']) || $_SESSION['manager_logged_in'] !== true) { 
     header('Location: manager_login.php'); 
     exit(); 
@@ -38,7 +38,7 @@ if (!in_array($sortField, $allowedSort)) {
 $sql = "SELECT * FROM eoi"; 
 $whereAdded = false; 
 
-#if for all the stated variables basically 
+
 if (!empty($firstName)) { 
     $sql .= $whereAdded ? " AND " : " WHERE "; 
     $sql .= "FirstName LIKE '%" . mysqli_real_escape_string($conn, $firstName) . "%'"; 
@@ -56,10 +56,10 @@ if (!empty($jobRef)) {
     $sql .= "JobReference LIKE '%" . mysqli_real_escape_string($conn, $jobRef) . "%'"; 
 } 
 
-#For Sorting basically 
+
 $sql .= " ORDER BY $sortField ASC"; 
 
-#To run basically 
+ 
 $result = mysqli_query($conn, $sql); 
 
 if (!$result) { 
