@@ -32,11 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Function to auto-unlock expired accounts
-        $unlock_query = "UPDATE managers SET login_attempts = 0, locked_until = NULL WHERE locked_until IS NOT NULL AND locked_until < NOW()";
+        $unlock_query = "UPDATE managers SET failed_attempts = 0, locked_until = NULL WHERE locked_until IS NOT NULL AND locked_until < NOW()";
+
         mysqli_query($conn, $unlock_query);
 
         // Get user data including login attempts and lock status
-        $stmt = mysqli_prepare($conn, "SELECT id, password, login_attempts, locked_until FROM managers WHERE username=?");
+        $stmt = mysqli_prepare($conn, "SELECT id, password, failed_attempts, locked_until FROM managers WHERE username=?");
         mysqli_stmt_bind_param($stmt, "s", $username);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
@@ -59,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['manager_id'] = $row['id'];
                     
                     // Reset login attempts
-                    $reset_stmt = mysqli_prepare($conn, "UPDATE managers SET login_attempts = 0, locked_until = NULL WHERE id = ?");
+                    $reset_stmt = mysqli_prepare($conn, "UPDATE managers SET failed_attempts = 0, locked_until = NULL WHERE id = ?");
                     mysqli_stmt_bind_param($reset_stmt, "i", $row['id']);
                     mysqli_stmt_execute($reset_stmt);
                     mysqli_stmt_close($reset_stmt);
@@ -70,17 +71,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     exit();
                 } else {
                     // Failed login - increment attempts
-                    $new_attempts = $row['login_attempts'] + 1;
+                    $new_attempts = $row['failed_attempts'] + 1;
                     
                     if ($new_attempts >= 3) {
                         // Lock account for 30 minutes
                         $lock_time = date('Y-m-d H:i:s', strtotime('+30 minutes'));
-                        $update_stmt = mysqli_prepare($conn, "UPDATE managers SET login_attempts = ?, locked_until = ? WHERE id = ?");
+                        $update_stmt = mysqli_prepare($conn, "UPDATE managers SET failed_attempts = ?, locked_until = ? WHERE id = ?");
                         mysqli_stmt_bind_param($update_stmt, "isi", $new_attempts, $lock_time, $row['id']);
                         $error = "Too many failed attempts. Account locked for 30 minutes.";
                     } else {
                         // Just increment attempts
-                        $update_stmt = mysqli_prepare($conn, "UPDATE managers SET login_attempts = ? WHERE id = ?");
+                        $update_stmt = mysqli_prepare($conn, "UPDATE managers SET failed_attempts = ? WHERE id = ?");
                         mysqli_stmt_bind_param($update_stmt, "ii", $new_attempts, $row['id']);
                         $remaining_attempts = 3 - $new_attempts;
                         $error = "Invalid username or password. Attempts: $new_attempts/3 ($remaining_attempts remaining)";

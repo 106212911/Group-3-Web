@@ -21,7 +21,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "jobs";
+        $dbname = "solidtech";
 
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
