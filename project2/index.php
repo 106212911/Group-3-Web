@@ -18,8 +18,9 @@
 
 <h2 class="AboutUs"> About Us </h2> <!--same here too. class used to ensure it does not mix up in the css styling--> 
 
-<p>SOLIDTECH is a tech industry leading company that specializes in data analytics and AI/ML mainly.</p> 
-<p>We here at SOLIDTECH believe that each and every individual is capable of bringing out extraordinary talent.</p> 
+<p><strong>Vision:</strong> To be a global leader in data analytics and AI/ML, empowering innovation across industries.</p>
+<p><strong>Mission:</strong> We believe every individual has the potential to unlock extraordinary talent and drive technological advancement.</p>
+ 
 
 <div class="Believe"> 
     <h3>What we believe?</h3>
