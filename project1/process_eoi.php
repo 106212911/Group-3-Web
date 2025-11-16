@@ -80,7 +80,8 @@
     }
    
     // "Python, Excel, MySQL"
-    $skillsList = implode(", ", $skills);           
+    $skillsList = implode(", ", $skills); 
+    $skillsList = sanitise_input($conn, $skillsList);
 
     // Extra free‑text field for skills not in the checkbox list
     $otherSkills = sanitise_input($conn, $_POST["otherskills"]);

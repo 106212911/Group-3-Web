@@ -10,7 +10,6 @@
  
 <?php include 'header.inc'; ?>
 <?php include 'nav.inc'; ?>
-<?php include 'config.php'; ?>
 
 <main class="container">
     <h2>Current Job Opportunities</h2>
@@ -18,82 +17,129 @@
     
     <div class="job-listings">
         <?php
-        // Fetch jobs from database
-        $sql = "SELECT * FROM jobs ORDER BY created_at DESC";
-        $result = $conn->query($sql);
+        // DATABASE CONFIGURATION - Directly in file
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "jobs";
 
-        if ($result->num_rows > 0) {
-            // Output data of each row
-            while($row = $result->fetch_assoc()) {
-                // Convert pipe-separated strings to arrays
-                $responsibilities = explode('|', $row["key_responsibilities"]);
-                $essential_quals = explode('|', $row["essential_qualifications"]);
-                $preferable_quals = explode('|', $row["preferable_qualifications"]);
-                
-                echo '
-                <article class="job">
-                    <div class="job-header">
-                        <h2 id="job-' . htmlspecialchars($row["job_ref"]) . '">' . htmlspecialchars($row["job_title"]) . '</h2>
-                        <div class="job-meta">
-                            <div><i>🔖</i> Ref: ' . htmlspecialchars($row["job_ref"]) . '</div>
-                            <div><i>💰</i> Salary: ' . htmlspecialchars($row["salary_range"]) . '</div>
-                            <div><i>📊</i> Reports to: ' . htmlspecialchars($row["reports_to"]) . '</div>
-                        </div>
-                        <p>' . htmlspecialchars($row["job_description"]) . '</p>
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Check connection
+        if ($conn->connect_error) {
+            // If connection fails, show static content
+            echo "<p style='color: red;'>Database connection failed. Showing sample jobs.</p>";
+            ?>
+            
+            <!-- STATIC JOB LISTINGS AS FALLBACK -->
+            <article class="job">
+                <div class="job-header">
+                    <h2 id="job-listing">Senior Data Analyst</h2>
+                    <div class="job-meta">
+                        <div><i>🔖</i> Ref: DA289</div>
+                        <div><i>💰</i> Salary: RM210,000 - RM230,000</div>
+                        <div><i>📊</i> Reports to: Human Resources Department</div>
                     </div>
+                    <p>We're seeking an experienced Senior Data Analyst</p>
+                </div>
+                
+                <section class="job-section">
+                    <h3>Key Responsibilities</h3>
+                    <ol>
+                        <li>Data Collection & Management: Identify, gather, and organize data from various sources and systems.</li>
+                        <li>Data cleaning & Quality: Identify and address data quality issues and implement controls to ensure data accuracy.</li>
+                        <li>Analysis & Interpretation: Use mathematical and statistical models to analyze datasets, identify patterns, and extract actionable insights.</li>
+                        <li>Reporting & Visualization: Create clear reports, dashboards, and findings to stakeholders.</li>
+                        <li>Collaboration: Work with other data professionals and business units to understand data needs and support decision-making processes.</li>
+                    </ol>
+                </section>
+                
+                <section class="job-section">
+                    <h3>Qualifications & Requirements</h3>
+                    <h4>Essential:</h4>
+                    <ul>
+                        <li>5+ years of professional data analyst experience</li>
+                        <li>Proficiency in JavaScript/TypeScript, HTML5, and CSS3</li>
+                        <li>Able to think critically, identify patterns, and use data to find solutions to business challenges.</li>
+                        <li>Strong knowledge of database systems (SQL and NoSQL)</li>
+                        <li>Understand how data relates to broader business goals and how insights can drive growth and efficiency.</li>
+                        <li>Familiarity with Git and agile development methodologies</li>
+                        <li>Bachelor's degree in Computer Science or related field</li>
+                    </ul>
                     
-                    <section class="job-section">
-                        <h3>Key Responsibilities</h3>
-                        <ol>';
-                
-                foreach ($responsibilities as $responsibility) {
-                    echo '<li>' . htmlspecialchars($responsibility) . '</li>';
-                }
-                
-                echo '
-                        </ol>
-                    </section>
-                    
-                    <section class="job-section">
-                        <h3>Qualifications & Requirements</h3>
-                        <h4>Essential:</h4>
-                        <ul>';
-                
-                foreach ($essential_quals as $qual) {
-                    echo '<li>' . htmlspecialchars($qual) . '</li>';
-                }
-                
-                echo '
-                        </ul>
-                        
-                        <h4>Preferable:</h4>
-                        <ul>';
-                
-                foreach ($preferable_quals as $qual) {
-                    echo '<li>' . htmlspecialchars($qual) . '</li>';
-                }
-                
-                echo '
-                        </ul>
-                    </section>
-                    
-                    <div class="job-apply">
-                        <a href="apply.php?job_ref=' . htmlspecialchars($row["job_ref"]) . '&job_title=' . urlencode($row["job_title"]) . '" class="apply-button">Apply for this Position</a>
-                    </div>
-                </article>';
-            }
+                    <h4>Preferable:</h4>
+                    <ul>
+                        <li>Experience with Big Data technologies (such as Hadoop, Spark, or similar distributed computing frameworks)</li>
+                        <li>Advanced statistical modeling expertise (including predictive modeling, regression analysis, and experimental design)</li>
+                        <li>Proficiency in data visualization tools beyond basic charting (such as Tableau, Power BI, or advanced D3.js)</li>
+                        <li>Domain knowledge in our specific industry (such as finance, healthcare, e-commerce, or marketing analytics)</li>
+                        <li>Experience with cloud data platforms (such as AWS Redshift, Google BigQuery, Azure Synapse, or Snowflake)</li>
+                    </ul>
+                </section>
+            </article>
+            
+            <?php
         } else {
-            echo '<div class="no-jobs">
-                    <h3>No Current Openings</h3>
-                    <p>There are no job openings at the moment. Please check back later or <a href="contact.php">contact us</a> for future opportunities.</p>
-                  </div>';
-        }
+            // Connection successful - show dynamic content
+            $sql = "SELECT * FROM jobs";
+            $result = $conn->query($sql);
 
-        $conn->close();
+            if ($result && $result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    $responsibilities = explode('|', $row["key_responsibilities"]);
+                    $essential_quals = explode('|', $row["essential_qualifications"]);
+                    $preferable_quals = explode('|', $row["preferable_qualifications"]);
+                    ?>
+                    
+                    <article class="job">
+                        <div class="job-header">
+                            <h2 id="job-listing"><?php echo htmlspecialchars($row["job_title"]); ?></h2>
+                            <div class="job-meta">
+                                <div><i>🔖</i> Ref: <?php echo htmlspecialchars($row["job_ref"]); ?></div>
+                                <div><i>💰</i> Salary: <?php echo htmlspecialchars($row["salary_range"]); ?></div>
+                                <div><i>📊</i> Reports to: <?php echo htmlspecialchars($row["reports_to"]); ?></div>
+                            </div>
+                            <p><?php echo htmlspecialchars($row["job_description"]); ?></p>
+                        </div>
+                        
+                        <section class="job-section">
+                            <h3>Key Responsibilities</h3>
+                            <ol>
+                                <?php foreach ($responsibilities as $responsibility): ?>
+                                    <li><?php echo htmlspecialchars($responsibility); ?></li>
+                                <?php endforeach; ?>
+                            </ol>
+                        </section>
+                        
+                        <section class="job-section">
+                            <h3>Qualifications & Requirements</h3>
+                            <h4>Essential:</h4>
+                            <ul>
+                                <?php foreach ($essential_quals as $qual): ?>
+                                    <li><?php echo htmlspecialchars($qual); ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                            
+                            <h4>Preferable:</h4>
+                            <ul>
+                                <?php foreach ($preferable_quals as $qual): ?>
+                                    <li><?php echo htmlspecialchars($qual); ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </section>
+                    </article>
+                    <?php
+                }
+            } else {
+                echo "<p>No jobs found in database.</p>";
+            }
+            $conn->close();
+        }
         ?>
     </div>
     
-    <!-- Benefits Section -->
+
     <aside>
         <h3>Why Join SolidTech Inc.?</h3>
         <p>We offer more than just a job - we provide an environment where you can grow professionally while working on meaningful projects.</p>
