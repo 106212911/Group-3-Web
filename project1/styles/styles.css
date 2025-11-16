@@ -76,7 +76,7 @@ p {
     width: 300px;
     height: 300px;
     background-color: #5f6760;
-    margin: 20px auto 80px 150px;
+    margin: 20px 50px 20px 50px;
     padding: 30px 30px;
     border: 2px solid black;
     font-size: 1em;
@@ -95,7 +95,7 @@ p {
     width: 300px;
     height: 300px;
     background-color: #5f6760;
-    margin: 20px 20px 20px 250px; /* Used 4 because I want to control all 4 sides of the circle to give a gap between the square and circle. */
+    margin: 20px 50px 20px 50px; /* Used 4 because I want to control all 4 sides of the circle to give a gap between the square and circle. */
     padding: 30px 30px;
     border: 2px solid black;
     font-size: 1em;
@@ -112,7 +112,7 @@ p {
     width: 300px;
     height: 300px;
     background-color: #5f6760;
-    margin: 20px 20px 20px 300px; /* Used 4 because I want to control all 4 sides of the circle to give a gap between the square and circle. */
+    margin: 20px 50px 20px 50px; /* Used 4 because I want to control all 4 sides of the circle to give a gap between the square and circle. */
     padding: 30px 30px;
     border: 2px solid black;
     font-size: 1em;
@@ -148,7 +148,7 @@ p {
     width: 300px;
     height: 350px;
     background-color: coral;
-    margin: 20px auto 80px 150px;
+    margin: 20px 50px 80px 50px;
     padding: 30px 30px;
     border: 2px solid black;
     font-size: 1em;
@@ -175,7 +175,7 @@ p {
     width: 300px;
     height: 350px;
     background-color: khaki;
-    margin: 100px auto 20px 250px;
+    margin: 20px 50px 80px 50px;
     padding: 30px 30px;
     border: 2px solid whitesmoke;
     font-size: 1em;
@@ -202,7 +202,7 @@ p {
     width: 300px;
     height: 350px;
     background-color: blanchedalmond;
-    margin: 20px auto 80px 150px;
+    margin: 20px 50px 80px 50px;
     padding: 30px 30px;
     border: 2px solid whitesmoke;
     font-size: 1em;
@@ -228,7 +228,7 @@ p {
     width: 300px;
     height: 350px;
     background-color: lightgreen;
-    margin: 20px auto 80px 150px;
+    margin: 20px 50px 80px 50px;
     padding: 30px 30px;
     border: 2px solid whitesmoke;
     font-size: 1em;

@@ -153,6 +153,7 @@
     <dt>Ngai Jun Min</dt>
     <dd>- Job Description, JIRA</dd>
     <dd>- Worked on job.php </dd>
+    <dd>- Worked on jobs table </dd>
     <dt>Pang Jun Hao</dt>
     <dd>- Application form, JIRA</dd>
     <dd>- Worked on eoi table </dd>

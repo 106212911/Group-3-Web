@@ -45,6 +45,21 @@
         if (!mysqli_query($conn, $create_table)) {
             die("<p>Table creation failed: " . mysqli_error($conn) . "</p>");
         }
+
+        // Create managers table if it doesn't exist (for Enhancements #2, #3, #4)
+        $create_managers_table = "CREATE TABLE IF NOT EXISTS managers (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(50) UNIQUE NOT NULL,
+            password VARCHAR(255) NOT NULL,
+            email VARCHAR(100),
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            login_attempts INT DEFAULT 0,
+            locked_until TIMESTAMP NULL
+        )";
+        
+        if (!mysqli_query($conn, $create_managers_table)) {
+            die("<p>Managers table creation failed: " . mysqli_error($conn) . "</p>");
+        }
     } else {
         die("<p>Database creation failed: " . mysqli_error($conn) . "</p>");
     }
