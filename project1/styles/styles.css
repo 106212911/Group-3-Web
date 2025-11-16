@@ -22,7 +22,7 @@ header h2 {
 
 /* For the header bg image*/
 header {
-    background: url("images/imagg.png") no-repeat center center fixed;    /* I used first center basically to align horizontally, second center for vertically aligning to ensure when zoom out no weird looks for the page. Fixed also plays a important role as it anchors the bg image so when i scroll down it sticks to the page */
+    background: url("images/imagg.png") no-repeat center center fixed;
     color: white;
     height: 1000px;
     padding: 0;
@@ -76,7 +76,7 @@ p {
     width: 300px;
     height: 300px;
     background-color: #5f6760;
-    margin: 20px auto 80px 150px;
+    margin: 20px 50px 20px 50px;
     padding: 30px 30px;
     border: 2px solid black;
     font-size: 1em;
@@ -95,7 +95,7 @@ p {
     width: 300px;
     height: 300px;
     background-color: #5f6760;
-    margin: 20px 20px 20px 250px; /* Used 4 because I want to control all 4 sides of the circle to give a gap between the square and circle. */
+    margin: 20px 50px 20px 50px; /* Used 4 because I want to control all 4 sides of the circle to give a gap between the square and circle. */
     padding: 30px 30px;
     border: 2px solid black;
     font-size: 1em;
@@ -112,7 +112,7 @@ p {
     width: 300px;
     height: 300px;
     background-color: #5f6760;
-    margin: 20px 20px 20px 300px; /* Used 4 because I want to control all 4 sides of the circle to give a gap between the square and circle. */
+    margin: 20px 50px 20px 50px; /* Used 4 because I want to control all 4 sides of the circle to give a gap between the square and circle. */
     padding: 30px 30px;
     border: 2px solid black;
     font-size: 1em;
@@ -148,7 +148,7 @@ p {
     width: 300px;
     height: 350px;
     background-color: coral;
-    margin: 20px auto 80px 150px;
+    margin: 20px 50px 80px 50px;
     padding: 30px 30px;
     border: 2px solid black;
     font-size: 1em;
@@ -175,7 +175,7 @@ p {
     width: 300px;
     height: 350px;
     background-color: khaki;
-    margin: 100px auto 20px 250px;
+    margin: 20px 50px 80px 50px;
     padding: 30px 30px;
     border: 2px solid whitesmoke;
     font-size: 1em;
@@ -202,7 +202,7 @@ p {
     width: 300px;
     height: 350px;
     background-color: blanchedalmond;
-    margin: 20px auto 80px 150px;
+    margin: 20px 50px 80px 50px;
     padding: 30px 30px;
     border: 2px solid whitesmoke;
     font-size: 1em;
@@ -228,7 +228,7 @@ p {
     width: 300px;
     height: 350px;
     background-color: lightgreen;
-    margin: 20px auto 80px 150px;
+    margin: 20px 50px 80px 50px;
     padding: 30px 30px;
     border: 2px solid whitesmoke;
     font-size: 1em;
@@ -269,6 +269,7 @@ p {
             grid-template-columns: 1fr;
             gap: 30px;
             margin-bottom: 40px;
+            text-align: center;
         }
         
         .job {
@@ -287,6 +288,8 @@ p {
             border-bottom: 2px solid #e8e8e8;
             padding-bottom: 20px;
             margin-bottom: 20px;
+            text-align: center;
+
         }
         
         .job-header h2 {
@@ -294,18 +297,23 @@ p {
             font-size: 1.8rem;
             margin-bottom: 10px;
         }
-        
         .job-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 15px;
-        }
+        display: flex;
+        flex-direction: row;
+        justify-content: center;     
+        align-items: center;          
+        text-align: center;           
+        width: 100%;                  
+        gap: 10px;
+        background-color: red;
+    }
+
         
         .job-meta div {
             display: flex;
             align-items: center;
             gap: 8px;
+            text-align: center;
         }
         
         .job-meta i {
@@ -610,3 +618,8 @@ tr:nth-child(even) {
     font-weight: bold;
     margin: 0.5em 0;
 }
+
+.mid {
+    text-align: center;    
+}
+

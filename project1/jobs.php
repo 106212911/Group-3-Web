@@ -167,6 +167,6 @@
     </aside>
 </main>
 
-<?php include 'footer.inc'; ?>
-</body>
-</html>
+    <?php include 'footer.inc'; ?>
+    </body>
+    </html>

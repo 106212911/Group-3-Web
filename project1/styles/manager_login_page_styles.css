@@ -1,16 +1,27 @@
 /* Login Page By Daya*/
 
+/* This basicalyl makes the page bg image fit to the screen*/
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 .login-page {
     height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to right, #74ebd5, #ACB6E5);
-    font-family: Arial, Helvetica, sans-serif
+    background-color: black;
+    background-image: url("images/imagg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .login-page form {
-    background: white;
+    background: lightblue;
     padding: 30px;
     width: 350px;
     border-radius: 10px;
