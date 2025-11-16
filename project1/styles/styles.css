@@ -22,7 +22,7 @@ header h2 {
 
 /* For the header bg image*/
 header {
-    background: url("images/imagg.png") no-repeat center center fixed;    /* I used first center basically to align horizontally, second center for vertically aligning to ensure when zoom out no weird looks for the page. Fixed also plays a important role as it anchors the bg image so when i scroll down it sticks to the page */
+    background: url("images/imagg.png") no-repeat center center fixed;
     color: white;
     height: 1000px;
     padding: 0;
