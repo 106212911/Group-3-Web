@@ -18,40 +18,56 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
     exit();
 }
 
-
 $error = '';
 $success = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
     $password = trim($_POST['password'] ?? '');
-
-    $conn = mysqli_connect($host, $user, $pwd, $sql_db);
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-// Performs a check basically
-    $sql_check = "SELECT * FROM managers WHERE username='$username'";
-    $result_check = mysqli_query($conn, $sql_check);
-
-    if (mysqli_num_rows($result_check) > 0) {
-        $error = "This username is already in use. Kindly try another combination.";
+    $confirm_password = trim($_POST['confirm_password'] ?? '');
+    
+    // For validation
+    if (empty($username) || empty($password) || empty($confirm_password)) {
+        $error = "All fields are required.";
+    } elseif (strlen($username) < 4) {
+        $error = "Username must be at least 4 characters long.";
+    } elseif (strlen($password) < 8) {
+        $error = "Password must be at least 8 characters long.";
+    } elseif ($password !== $confirm_password) {
+        $error = "Passwords do not match.";
     } else {
-
-
-        // For registering new managers
-        $sql_insert = "INSERT INTO managers (username, password) VALUES ('$username', '$password')";
-        if (mysqli_query($conn, $sql_insert)) {
-            $success = "You have successfully registered as a manager.";
-        } else {
-            $error = "Error: " . mysqli_error($conn);
+        $conn = mysqli_connect($host, $user, $pwd, $sql_db);
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
         }
+
+        // Performs a check basically 
+        $stmt = mysqli_prepare($conn, "SELECT username FROM managers WHERE username=?");
+        mysqli_stmt_bind_param($stmt, "s", $username);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        if (mysqli_num_rows($result) > 0) {
+            $error = "This username is already in use. Kindly try another combination.";
+            mysqli_stmt_close($stmt); 
+        } else {
+            mysqli_stmt_close($stmt);
+
+            // For registering new manager
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $stmt = mysqli_prepare($conn, "INSERT INTO managers (username, password) VALUES (?, ?)");
+            mysqli_stmt_bind_param($stmt, "ss", $username, $hashed_password);
+            
+            if (mysqli_stmt_execute($stmt)) {
+                $success = "You have successfully registered as a manager.";
+            } else {
+                $error = "Error: " . mysqli_error($conn);
+            }
+            mysqli_stmt_close($stmt);
+        }
+        mysqli_close($conn); 
     }
-
-    mysqli_close($conn);
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="login-page">
-
         <?php if ($success): ?>
             <div class="success"><?= htmlspecialchars($success) ?></div>
             <a href="manager_login.php"><button>Login Page</button></a>
@@ -75,8 +90,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="error"><?= htmlspecialchars($error) ?></div>
                 <?php endif; ?>
 
-                <input type="text" name="username" placeholder="Username" required>
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="text" name="username" placeholder="Username (minimum 4 characters required)" required>
+                <input type="password" name="password" placeholder="Password (minimum 8 characters required)" required>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required> 
                 <button type="submit">Register</button>
             </form>
         <?php endif; ?>

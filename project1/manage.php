@@ -35,15 +35,13 @@ if (isset($_POST['delete_jobref']) && !empty($_POST['delete_jobref'])) {
     $stmt = $conn->prepare("DELETE FROM eoi WHERE JobReference=?");
     $stmt->bind_param("s", $jobreference);
     $stmt->execute();
-}
-
-    if (mysqli_affected_rows($conn) > 0) {
+    if ($stmt->affected_rows > 0) {
         echo "Deleted EOIs for $jobreference<br>";
-
     } else {
         echo "No EOIs found for that job reference<br>";
-
     }
+    $stmt->close();
+}
 
 
 //  Update status section
@@ -53,13 +51,14 @@ if (isset($_POST['update_status_eoi']) && isset($_POST['new_status'])) {
     $stmt = $conn->prepare("UPDATE eoi SET Status=? WHERE EOInumber=?");
     $stmt->bind_param("si", $status, $eoinum);
     $stmt->execute();
+    
+    if ($stmt->affected_rows > 0) {
+        echo "Updated EOI #$eoinum to $status<br>";
+    } else {
+        echo "EOI not found. Try again<br>";
+    }
+    $stmt->close();
 }
-if (mysqli_affected_rows($conn) > 0) {
-    echo "Updated EOI #$eoinum to $status<br>";
-} else {
-    echo "EOI not found. Try again<br>";
-}
-
 
 
 $firstName = $_GET['first_name'] ?? '';
@@ -69,13 +68,10 @@ $jobreference = $_GET['job_reference'] ?? '';
 $allowedSort = ['EOInumber','JobReference','FirstName','LastName','Status'];
 $sortField = in_array($_GET['sorting_field'] ?? '', $allowedSort) ? $_GET['sorting_field'] : 'EOInumber';
  
-if (!in_array($sortField, $allowedSort)) { 
-    $sortField = 'EOInumber'; 
-}
+
 
  
-$sql = "SELECT * FROM eoi"; 
-$whereAdded = false; 
+$sql = "SELECT * FROM eoi WHERE 1=1"; 
 
 #if for all the stated variables basically 
 if ($firstName !== '') {
@@ -132,30 +128,32 @@ while ($row = mysqli_fetch_assoc($result)) {
     $skill3 = $skills[2] ?? '';
 
     echo "<tr> 
-        <td>{$row['EOInumber']}</td> 
-        <td>{$row['JobReference']}</td> 
-        <td>{$row['FirstName']}</td> 
-        <td>{$row['LastName']}</td> 
-        <td>{$row['DOB']}</td> 
-        <td>{$row['Gender']}</td> 
-        <td>{$row['StreetAddress']}</td> 
-        <td>{$row['Suburb']}</td> 
-        <td>{$row['State']}</td> 
-        <td>{$row['Postcode']}</td> 
-        <td>{$row['Email']}</td> 
-        <td>{$row['Phone']}</td> 
-        <td>{$skill1}</td> 
-        <td>{$skill2}</td> 
-        <td>{$skill3}</td> 
-        <td>{$row['OtherSkills']}</td> 
-        <td>{$row['Status']}</td> 
-    </tr>"; 
+    <td>" . htmlspecialchars($row['EOInumber']) . "</td> 
+    <td>" . htmlspecialchars($row['JobReference']) . "</td> 
+    <td>" . htmlspecialchars($row['FirstName']) . "</td> 
+    <td>" . htmlspecialchars($row['LastName']) . "</td> 
+    <td>" . htmlspecialchars($row['DOB']) . "</td> 
+    <td>" . htmlspecialchars($row['Gender']) . "</td> 
+    <td>" . htmlspecialchars($row['StreetAddress']) . "</td> 
+    <td>" . htmlspecialchars($row['Suburb']) . "</td> 
+    <td>" . htmlspecialchars($row['State']) . "</td> 
+    <td>" . htmlspecialchars($row['Postcode']) . "</td> 
+    <td>" . htmlspecialchars($row['Email']) . "</td> 
+    <td>" . htmlspecialchars($row['Phone']) . "</td> 
+    <td>" . htmlspecialchars($skill1) . "</td> 
+    <td>" . htmlspecialchars($skill2) . "</td> 
+    <td>" . htmlspecialchars($skill3) . "</td> 
+    <td>" . htmlspecialchars($row['OtherSkills']) . "</td> 
+    <td>" . htmlspecialchars($row['Status']) . "</td> 
+</tr>";
 }
 
     echo "</table>"; 
 } else { 
     echo "<p>No EOI's found.</p>"; 
 } 
+
+mysqli_close($conn);
 ?> 
  
 
